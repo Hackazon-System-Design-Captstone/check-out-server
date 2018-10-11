@@ -71,4 +71,4 @@ app.post('/add-product', (req, res) => {
   })
 })
 
-app.listen(3003, () => console.log('Listening on port 3003...'));
+app.listen(3004, () => console.log('Listening on port 3003...'));

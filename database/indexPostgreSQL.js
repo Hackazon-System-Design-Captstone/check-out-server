@@ -5,7 +5,7 @@ let client = {
   user: 'power_user',
   password: '$password',
   database: 'hackazon'
-}
+};
 const connection = new pg.Client(client);
 
 connection.connect((error, results) => {
@@ -14,7 +14,7 @@ connection.connect((error, results) => {
   } else {
     console.log('Successfully connected to DB!')
   }
-})
+});
 
 let searchQuery = (productID, callback) => {
   connection.query(`SELECT * FROM product_table INNER JOIN protection_table ON product_table.product_id = protection_table.product_id WHERE product_table.product_id = ${productID};`, (error, results) => {
@@ -24,7 +24,7 @@ let searchQuery = (productID, callback) => {
       callback(null, results.rows[0]);
     }
   })
-}
+};
 
 let insertQuery = (product, callback) => {
   connection.query(`INSERT INTO product_table (name, image, link, shares, price, is_prime, in_stock, giftwrap_available, quantity_max, seller) VALUES ('${product.name}', '${product.image}', '${product.link}', ${product.shares}, ${product.price}, ${product.is_prime}, ${product.in_stock}, ${product.giftwrap_available}, ${product.quantity_max}, '${product.seller}')`, (error, results) => {
@@ -44,18 +44,7 @@ let insertQuery = (product, callback) => {
   });
 }
 
-  connection.query(`DELETE FROM product_table WHERE product_id = ${productID}`, (error, results) => {
-    if (error) {
-      callback(error, null);
-    } else {
-      callback(null, results);
-    }
-  })
-}
-
 module.exports = {
   searchQuery,
-  insertQuery,
-  updateQuery,
-  deleteQuery,
+  insertQuery
 }
