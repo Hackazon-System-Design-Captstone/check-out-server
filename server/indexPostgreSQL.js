@@ -18,14 +18,15 @@ const controller = require('../database/indexPostgreSQL.js');
 // });
 
 app.use(bodyParser.json());
+app.use(express.static('./client/dist'));
 
 app.get('/checkout/:id', (req, res) => {
 
-  client.get(req.params.id, (error, results) => {
-
-    if (results !== null) {
-      res.send(JSON.parse(results))
-    } else {
+  // client.get(req.params.id, (error, results) => {
+  //
+  //   if (results !== null) {
+  //     res.send(JSON.parse(results))
+  //   } else {
       controller.searchQuery(req.params.id, (error, results) => {
         if (error) {
           console.error('ERROR searchQuery controller failed')
@@ -53,10 +54,10 @@ app.get('/checkout/:id', (req, res) => {
               years: results.years,
             }
           }
-          client.setex(req.params.id, 1000000, JSON.stringify(result));
+          // client.setex(req.params.id, 1000000, JSON.stringify(result));
           res.send(result);
-        }
-      })
+      //   }
+      // })
     }
   })
 })
@@ -71,4 +72,4 @@ app.post('/add-product', (req, res) => {
   })
 })
 
-app.listen(3003, () => console.log('Listening on port 3003...'));
+app.listen(3004, () => console.log('Listening on port 3004...'));
