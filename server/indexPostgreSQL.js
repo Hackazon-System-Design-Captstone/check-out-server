@@ -7,15 +7,15 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const controller = require('../database/indexPostgreSQL.js');
 
-let client = redis.createClient();
-
-client.on('connect', function(error) {
-  if (error) {
-    console.log('ERROR connecting to redis')
-  } else {
-    console.log('Connected to redis...')
-  }
-});
+// let client = redis.createClient();
+//
+// client.on('connect', function(error) {
+//   if (error) {
+//     console.log('ERROR connecting to redis')
+//   } else {
+//     console.log('Connected to redis...')
+//   }
+// });
 
 app.use(bodyParser.json());
 
