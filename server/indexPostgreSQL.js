@@ -1,5 +1,7 @@
 const express = require('express');
 const redis = require("redis");
+const cors = require('cors');
+
 
 const app = express();
 
@@ -17,6 +19,7 @@ const controller = require('../database/indexPostgreSQL.js');
 //   }
 // });
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('./client/dist'));
 
