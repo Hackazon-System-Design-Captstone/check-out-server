@@ -21,7 +21,6 @@ const controller = require('../database/indexPostgreSQL.js');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('./client/dist'));
 
 app.get('/checkout/:id', (req, res) => {
 
@@ -65,9 +64,9 @@ app.get('/checkout/:id', (req, res) => {
   })
 })
 
-// app.get('/loaderio-115320b901e0f9f6617dd8d8b4c03fdc.txt', (req, res) => {
-//   res.send('loaderio-115320b901e0f9f6617dd8d8b4c03fdc')
-// })
+app.get('/loaderio-115320b901e0f9f6617dd8d8b4c03fdc.txt', (req, res) => {
+  res.send('loaderio-115320b901e0f9f6617dd8d8b4c03fdc')
+})
 
 app.post('/add-product', (req, res) => {
   controller.insertQuery(req.body, (error, results) => {
