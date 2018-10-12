@@ -65,7 +65,7 @@ app.get('/checkout/:id', (req, res) => {
   })
 })
 
-app.get('loaderio-0cd910514db2950ebd92c15c5fae478b', (req, res) => {
+app.get('/loaderio-0cd910514db2950ebd92c15c5fae478b', (req, res) => {
   res.send('loaderio-0cd910514db2950ebd92c15c5fae478b')
 })
 
